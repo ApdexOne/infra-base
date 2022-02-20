@@ -45,12 +45,12 @@ Instalacion del cluster Kubernetes
 Instalacios del ingress controller
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
 
-1 .  Sealed-secrets
+1 .  Sealed-secrets <br>
 Nos permite guardar secretos de forma segura en nuestros repositorios
-Instalacion:
+Instalacion:<br>
 - sudo  kubectl apply -f k8s-apps/sealed-secrets/controller.yaml
 
-2 . ArgoCD
+2 . ArgoCD <br>
 sudo kubectl kustomize k8s-apps/argo-cd/overlays/testing \
 | sudo kubectl apply -f -
 
