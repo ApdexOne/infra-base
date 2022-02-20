@@ -20,17 +20,17 @@ se precisa instalar las siguientes herramientas:
 - kubeseal [https://github.com/bitnami-labs/sealed-secrets]
  - Instalacion: Descargamos el releases desde [https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.3/kubeseal-0.17.3-linux-amd64.tar.gz]
     <p>
-    Descompactar el archivo , darle permisos de ejecucion y moverlo hasta /usr/local/bin/
-    Descompactar:
-    Permisos: chmod +x archivo
-    Moverlo: mv kubeseal /usr/local/bin/
+    Descompactar el archivo , darle permisos de ejecucion y moverlo hasta /usr/local/bin/ <br>
+    Descompactar:<br>
+    Permisos: chmod +x archivo<br>
+    Moverlo: mv kubeseal /usr/local/bin/<br>
     </p>
 - ArgoCD cli [https://github.com/argoproj/argo-cd/releases/tag/v2.2.5]
     <p>
-    Descargar el archivo , darle  permisos de ejecucion y moverlo hasta /usr/local/bin/
-    Permisos: chmod +x argocd-linux-amd64
-    Moverlo: mv argocd-linux-amd64 /usr/local/bin/argocd
-    Comprobamos que haya quedado instalado: argocd version
+    Descargar el archivo , darle  permisos de ejecucion y moverlo hasta /usr/local/bin/<br>
+    Permisos: chmod +x argocd-linux-amd64<br>
+    Moverlo: mv argocd-linux-amd64 /usr/local/bin/argocd<br>
+    Comprobamos que haya quedado instalado: argocd version<br>
     </p>
 - kustomize [https://kustomize.io/]
 - make (Opcional)
