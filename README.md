@@ -27,9 +27,9 @@ se precisa instalar las siguientes herramientas:
     </p>
 - ArgoCD cli [https://github.com/argoproj/argo-cd/releases/tag/v2.2.5]
     <p>
-    Descargar el archive , darle  permisos de ejecucion y moverlo hasta /usr/local/bin/
-    Permisos: chmod +x archivo
-    Moverlo: mv  argocd-linux /usr/local/bin/
+    Descargar el archivo , darle  permisos de ejecucion y moverlo hasta /usr/local/bin/
+    Permisos: chmod +x argocd-linux-amd64
+    Moverlo: mv argocd-linux-amd64 /usr/local/bin/argocd
     Comprobamos que haya quedado instalado: argocd version
     </p>
 - kustomize [https://kustomize.io/]
