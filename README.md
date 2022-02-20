@@ -44,9 +44,9 @@ Desde la raiz del repositorio: <br>
 <br>
 <code>kind create cluster --config=infra/cluster/kind.yaml</code>
 
-Instalacios del ingress controller
+Instalacion del ingress controller
 <br>
-<code>kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml</code>
+<code>sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml</code>
 
 1 .  Sealed-secrets <br>
 Nos permite guardar secretos de forma segura en nuestros repositorios
