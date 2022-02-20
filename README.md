@@ -56,7 +56,7 @@ Instalacion:<br>
 2 . ArgoCD <br>
 
 <code>
-sudo kubectl kustomize k8s-apps/argo-cd/overlays/testing \
+sudo kubectl kustomize infra/k8s-apps/argo-cd/overlays/testing \
 | sudo kubectl apply -f -
 </code>
 
@@ -64,5 +64,8 @@ sudo kubectl kustomize k8s-apps/argo-cd/overlays/testing \
 
 4 . Aplicaciones base
  <code>
-
+ sudo kubectl apply -f infra/argo-combined-demo/project.yaml
+ </code>
+ <code>
+ sudo kubectl apply -f infra/argo-combined-demo/project.yaml
  </code>
