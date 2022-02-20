@@ -19,18 +19,19 @@ se precisa instalar las siguientes herramientas:
 - helm [https://helm.sh/]
 - kubeseal [https://github.com/bitnami-labs/sealed-secrets]
  - Instalacion: Descargamos el releases desde [https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.17.3/kubeseal-0.17.3-linux-amd64.tar.gz]
-    <p>1 - Descompactar el archivo , darle permisos de ejecucion y moverlo hasta /usr/local/bin/
+    <p>
+    Descompactar el archivo , darle permisos de ejecucion y moverlo hasta /usr/local/bin/
     Descompactar:
     Permisos: chmod +x archivo
-    Moverlo:
-    - Comprobamos que haya quedado instalado: kubeseal version
+    Moverlo: mv kubeseal /usr/local/bin/
     </p>
 - ArgoCD cli [https://github.com/argoproj/argo-cd/releases/tag/v2.2.5]
-    1 - Descompactar el archivo , darle permisos de ejecucion y moverlo hasta /usr/local/bin/
+    <p>
+    Descargar el archive , darle  permisos de ejecucion y moverlo hasta /usr/local/bin/
     Permisos: chmod +x archivo
-    Moverlo:
-    - Comprobamos que haya quedado instalado: argocd version
-
+    Moverlo: mv  argocd-linux /usr/local/bin/
+    Comprobamos que haya quedado instalado: argocd version
+    </p>
 - kustomize [https://kustomize.io/]
 - make (Opcional)
 
