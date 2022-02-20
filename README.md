@@ -39,21 +39,26 @@ se precisa instalar las siguientes herramientas:
 Una vez tengamos un cluster k8s funcional iremos instalando las herramientas
 necesarias para el funcionamiento de nuestras pruebas
 
-
 Instalacion del cluster Kubernetes
-- kind create cluster --config=infra/cluster/kind.yaml
+Desde la raiz del repositorio: <br>
+<br>
+<code>kind create cluster --config=infra/cluster/kind.yaml</code>
 
 Instalacios del ingress controller
-- kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+<br>
+<code>kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml</code>
 
 1 .  Sealed-secrets <br>
 Nos permite guardar secretos de forma segura en nuestros repositorios
 Instalacion:<br>
-- sudo  kubectl apply -f k8s-apps/sealed-secrets/controller.yaml
+<code>sudo  kubectl apply -f k8s-apps/sealed-secrets/controller.yaml</code>
 
 2 . ArgoCD <br>
+
+<code>
 sudo kubectl kustomize k8s-apps/argo-cd/overlays/testing \
 | sudo kubectl apply -f -
+</code>
 
 3 . Creamos los secretos para conectarnos al github
 
