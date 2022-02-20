@@ -9,7 +9,7 @@ spec:
   project: testing
   source:
     path: argo-workflows/overlays/testing
-    repoURL: git@github.com:ApdexOne/kubernetes-base.git
+    repoURL: https://github.com/ApdexOne/infra-base.git
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
