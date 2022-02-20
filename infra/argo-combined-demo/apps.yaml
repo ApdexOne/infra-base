@@ -1,0 +1,24 @@
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: testing
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: testing
+  source:
+    repoURL: git@github.com:ApdexOne/infra-base.git
+    targetRevision: HEAD
+    path: infra
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: testing
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
