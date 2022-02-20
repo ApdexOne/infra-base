@@ -10,9 +10,9 @@ metadata:
 spec:
   project: testing
   source:
-    repoURL: git@github.com:ApdexOne/infra-base.git
+    repoURL: https://github.com/ApdexOne/infra-base.git
     targetRevision: HEAD
-    path: infra
+    path: infra/argo-combined-demo/testing
   destination:
     server: https://kubernetes.default.svc
     namespace: testing
