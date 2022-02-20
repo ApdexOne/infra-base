@@ -4,5 +4,4 @@ resources:
 - namespace.yaml
 - rbac.yaml
 - githubcred.yaml
-- giteacred.yaml
 namespace: workflows

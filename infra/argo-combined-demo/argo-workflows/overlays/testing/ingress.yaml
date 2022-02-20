@@ -11,5 +11,5 @@ spec:
             serviceName: argo-server
             servicePort: 2746
           path: /
-    host: argo-workflows.172.20.0.1.nip.io
+    host: argo-workflows.127.0.0.1.nip.io
 
