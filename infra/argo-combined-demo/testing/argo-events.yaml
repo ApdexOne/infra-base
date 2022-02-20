@@ -8,8 +8,8 @@ metadata:
 spec:
   project: testing
   source:
-    path: argo-events/overlays/testing
-    repoURL: git@github.com:ApdexOne/kubernetes-base.git
+    path: infra/argo-combined-demo/argo-events/overlays/testing
+    repoURL: https://github.com/ApdexOne/infra-base.git
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
