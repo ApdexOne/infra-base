@@ -66,6 +66,7 @@ sudo kubectl kustomize infra/k8s-apps/argo-cd/overlays/testing \
  <code>
  sudo kubectl apply -f infra/argo-combined-demo/project.yaml
  </code>
+ <br>
  <code>
  sudo kubectl apply -f infra/argo-combined-demo/project.yaml
  </code>
