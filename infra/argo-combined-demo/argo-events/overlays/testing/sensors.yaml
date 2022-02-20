@@ -1,0 +1,137 @@
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: webhook
+spec:
+  template:
+    serviceAccountName: argo-events-sa
+  dependencies:
+  - name: github
+    eventSourceName: gitea
+    eventName: project1
+  triggers:
+  - template:
+      name: trigger
+      argoWorkflow:
+        group: argoproj.io
+        version: v1alpha1
+        resource: workflows
+        operation: submit
+        source:
+          resource:
+            apiVersion: argoproj.io/v1alpha1
+            kind: Workflow
+            metadata:
+              generateName: project1-
+              namespace: workflows
+            spec:
+              entrypoint: create-image
+              serviceAccountName: workflow
+              volumes:
+              - name: regcred
+                secret:
+                  secretName: regcred
+                  items:
+                    - key: .dockerconfigjson
+                      path: config.json
+              - name: github-access
+                secret:
+                  secretName: github-access
+                  items:
+                    - key: token
+                      path: token
+                    - key: user
+                      path: user
+                    - key: email
+                      path: email
+              templates:
+              - name: create-image
+                dag:
+                  tasks:
+                  - name:  build-k6-image
+                    templateRef:
+                      name: container-image
+                      template: build-kaniko-git
+                      clusterScope: true
+                    arguments:
+                      parameters:
+                      - name: repo_url
+                        value: ""
+                      - name: repo_ref
+                        value: ""
+                      - name: repo_commit_id
+                        value: ""
+                      - name: container_image
+                        value: norgefajardo/
+                      - name: container_tag
+                        value: "latest"
+                  - name: create-cronjob
+                    templateRef:
+                      name: cronjob
+                      template: create-cronjob
+                      clusterScope: true
+                    dependencies: [build-k6-image]
+        parameters:
+        - src:
+            dependencyName: github
+            dataKey: body.repository.ssh_url
+          dest: spec.templates.0.dag.tasks.0.arguments.parameters.0.value
+        - src:
+            dependencyName: github
+            dataKey: body.ref
+          dest: spec.templates.0.dag.tasks.0.arguments.parameters.1.value
+        - src:
+            dependencyName: github
+            dataKey: body.after
+          dest: spec.templates.0.dag.tasks.0.arguments.parameters.2.value
+        - src:
+            dependencyName: github
+            dataKey: body.repository.name
+          dest: spec.templates.0.dag.tasks.0.arguments.parameters.3.value
+          operation: append
+        - src:
+            dependencyName: github
+            dataKey: body.after
+          dest: spec.templates.0.dag.tasks.0.arguments.parameters.4.value
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: cronjob
+spec:
+  template:
+    serviceAccountName: argo-events-sa
+  dependencies:
+  - name: github
+    eventSourceName: gitea
+    eventName: cronjob
+  triggers:
+  - template:
+      name: trigger
+      k8s:
+        group: argoproj.io
+        version: v1alpha1
+        resource: workflows
+        operation: create
+        source:
+          resource:
+            apiVersion: argoproj.io/v1alpha1
+            kind: CronWorkflow
+            metadata:
+              generateName: cronjob-
+              namespace: workflows
+            spec:
+              schedule: "0 0 * * *"
+              concurrencyPolicy: "Replace"
+              startingDeadlineSeconds: 0
+              serviceAccountName: workflow
+              workflowSpec:
+                entrypoint: whalesay
+                templates:
+                - name: whalesay
+                  container:
+                    image: norgefajardo/project1:latest
