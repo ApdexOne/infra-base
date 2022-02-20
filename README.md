@@ -19,7 +19,7 @@ se precisa instalar las siguientes herramientas:
 - helm [https://helm.sh/]
 - kubeseal [https://github.com/bitnami-labs/sealed-secrets]
 - ArgoCD cli [https://argo-cd.readthedocs.io/en/stable/getting_started/]
-- kustomize
+- kustomize [https://kustomize.io/]
 - make (Opcional)
 
 ## Instalacion de los componentes del core
