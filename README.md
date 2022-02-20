@@ -51,7 +51,7 @@ Instalacios del ingress controller
 1 .  Sealed-secrets <br>
 Nos permite guardar secretos de forma segura en nuestros repositorios
 Instalacion:<br>
-<code>sudo  kubectl apply -f k8s-apps/sealed-secrets/controller.yaml</code>
+<code>sudo  kubectl apply -f infra/k8s-apps/sealed-secrets/controller.yaml</code>
 
 2 . ArgoCD <br>
 
@@ -63,4 +63,6 @@ sudo kubectl kustomize k8s-apps/argo-cd/overlays/testing \
 3 . Creamos los secretos para conectarnos al github
 
 4 . Aplicaciones base
- - sudo kubectl
+ <code>
+
+ </code>
