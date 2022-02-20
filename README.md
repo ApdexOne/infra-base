@@ -63,9 +63,11 @@ sudo kubectl kustomize infra/k8s-apps/argo-cd/overlays/testing \
 3 . Creamos los secretos para conectarnos al github
 
 4 . Aplicaciones base
+ <br>
  <code>
  sudo kubectl apply -f infra/argo-combined-demo/project.yaml
  </code>
+ <br>
  <br>
  <code>
  sudo kubectl apply -f infra/argo-combined-demo/project.yaml
