@@ -8,7 +8,7 @@ metadata:
 spec:
   project: testing
   source:
-    path: argo-workflows/overlays/testing
+    path: infra/argo-combined-demo/argo-workflows/overlays/testing
     repoURL: https://github.com/ApdexOne/infra-base.git
     targetRevision: HEAD
   destination:
