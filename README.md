@@ -32,13 +32,7 @@ se precisa instalar las siguientes herramientas:
     Moverlo: mv argocd-linux-amd64 /usr/local/bin/argocd<br>
     Comprobamos que haya quedado instalado: argocd version<br>
     </p>
-- kustomize [https://kustomize.io/]
-    <p>
-    Descargar el archivo , darle  permisos de ejecucion y moverlo hasta /usr/local/bin/<br>
-    Permisos: chmod +x argocd-linux-amd64<br>
-    Moverlo: mv argocd-linux-amd64 /usr/local/bin/argocd<br>
-    Comprobamos que haya quedado instalado: argocd version<br>
-    </p>
+- kustomize [https://kubectl.docs.kubernetes.io/installation/kustomize/binaries/]
 - make (Opcional)
 
 ## Instalacion de los componentes del core
