@@ -6,7 +6,7 @@ metadata:
   name: workflow-controller-configmap
 data:
   sso: |
-    issuer: https://argo-cd.apdexone.com/api/dex
+    issuer: http://argo-cd.127.0.0.1.nip.io/api/dex
     clientId:
       name: argo-workflows-sso
       key: client-id
