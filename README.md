@@ -33,14 +33,21 @@ se precisa instalar las siguientes herramientas:
     Comprobamos que haya quedado instalado: argocd version<br>
     </p>
 - kustomize [https://kustomize.io/]
+    <p>
+    Descargar el archivo , darle  permisos de ejecucion y moverlo hasta /usr/local/bin/<br>
+    Permisos: chmod +x argocd-linux-amd64<br>
+    Moverlo: mv argocd-linux-amd64 /usr/local/bin/argocd<br>
+    Comprobamos que haya quedado instalado: argocd version<br>
+    </p>
 - make (Opcional)
 
 ## Instalacion de los componentes del core
 Una vez tengamos un cluster k8s funcional iremos instalando las herramientas
 necesarias para el funcionamiento de nuestras pruebas
 
+
 Instalacion del cluster Kubernetes
-- kind create cluster --config=kind.yaml
+- kind create cluster --config=infra/cluster/kind.yaml
 
 Instalacios del ingress controller
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
