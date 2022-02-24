@@ -21,6 +21,8 @@ spec:
                 - ALL
           args:
             - server
+            - --auth-mode
+            - server
           ports:
             - name: web
               containerPort: 2746
