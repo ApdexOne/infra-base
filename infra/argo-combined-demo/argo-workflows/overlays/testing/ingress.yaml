@@ -1,6 +1,8 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: https
   name: argo-workflows
   namespace: argo
 spec:
