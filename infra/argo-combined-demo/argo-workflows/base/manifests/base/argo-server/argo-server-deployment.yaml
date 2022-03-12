@@ -19,7 +19,9 @@ spec:
             capabilities:
               drop:
                 - ALL
-          args: [ server, --auth-mode server ]
+          args:
+            - server
+            - --auth-mode server
           env: []
           ports:
             - name: web
