@@ -4,8 +4,6 @@ resources:
   - namespace.yaml
   - rbac.yaml
   - githubcred.yaml
-    #- container-image.yaml
-    #resources:
-    #- buildcontainerimage.yaml
+  - test-workflow-daemon-event.yaml
 namespace: workflows
 

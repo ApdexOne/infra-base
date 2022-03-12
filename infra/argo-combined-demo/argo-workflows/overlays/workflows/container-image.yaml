@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ClusterWorkflowTemplate
 metadata:
-  name: container-image
+  name: container-image-test
 spec:
   templates:
   - name: build-kaniko-git
@@ -19,4 +19,4 @@ spec:
       volumeMounts:
         - name: kaniko-secret
           mountPath: /kaniko/.docker/
-  
+
