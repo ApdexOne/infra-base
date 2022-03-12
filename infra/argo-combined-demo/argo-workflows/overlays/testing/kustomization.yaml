@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
 - ../../base/manifests/cluster-install
 - ingress.yaml
+- test-workflow.yaml

@@ -1,0 +1,194 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: pull-build-test-1
+  generateName: pull-build-test-
+  namespace: argo
+spec:
+  entrypoint: pull-build-test
+  volumes:
+  - name: build-pv
+    persistentVolumeClaim:
+      claimName: build-pv-claim
+
+  templates:
+  - name: pull-build-test
+    steps:
+    - - name: pull-build
+        template: pull-build
+    - - name: integration-test-service
+        template: integration-test-service
+      - name: integration-test-deployment
+        template: integration-test-deployment
+    - - name: myapp-service
+        template: myapp-service
+      - name: myapp-deployment
+        template: myapp-deployment
+
+  - name: integration-test-deployment
+    resource:
+      action: apply
+      manifest: |
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: integration-test
+          namespace: argo
+          ownerReferences:
+          - apiVersion: argoproj.io/v1alpha1
+            blockOwnerDeletion: true
+            kind: Workflow
+            name: "{{workflow.name}}"
+            uid: "{{workflow.uid}}"
+        spec:
+          selector:
+            matchLabels: &labels
+              app: integration-test
+          template:
+            metadata:
+              labels: *labels
+            spec:
+              containers:
+                - image: norgefajardo/integration-tests:0.1
+                  name: integration-test
+                  imagePullPolicy: Always
+                  resources:
+                    limits:
+                      memory: 1024Mi
+                      cpu: 200m
+                  env:
+                    - name: POD_NAMESPACE
+                      valueFrom:
+                        fieldRef:
+                          fieldPath: metadata.namespace
+                    - name: WORKFLOW_NAME
+                      value: "{{workflow.name}}"
+                  volumeMounts:
+                  - name: build-pv
+                    mountPath: /mnt/data
+              volumes:
+              - name: build-pv
+                persistentVolumeClaim:
+                  claimName: build-pv-claim
+              imagePullSecrets: #registry credentials
+                - name: regcred
+
+  - name: myapp-deployment
+    resource:
+      action: apply
+      manifest: |
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: myapp
+          namespace: argo
+          ownerReferences:
+          - apiVersion: argoproj.io/v1alpha1
+            blockOwnerDeletion: true
+            kind: Workflow
+            name: "{{workflow.name}}"
+            uid: "{{workflow.uid}}"
+        spec:
+          selector:
+            matchLabels: &labels
+              app: myapp
+          template:
+            metadata:
+              labels: *labels
+            spec:
+              containers:
+                - image: norgefajardo/app-test:0.1
+                  name: myapp
+                  imagePullPolicy: Always
+                  resources:
+                    limits:
+                      memory: 512Mi
+                      cpu: 400m
+                  env:
+                    - name: POD_IP
+                      valueFrom:
+                        fieldRef:
+                          fieldPath: status.podIP
+                  volumeMounts:
+                  - name: build-pv
+                    mountPath: /mnt/data
+              volumes:
+              - name: build-pv
+                persistentVolumeClaim:
+                  claimName: build-pv-claim
+              imagePullSecrets:
+                - name: regcred
+
+  - name: pull-build
+    container:
+      image: norgefajardo/pull-build-node:0.1
+      resources:
+        limits:
+          memory: 512Mi
+          cpu: 400m
+      imagePullPolicy: Always
+      command: [pull-build]
+      env:
+        - name: GIT_USER
+          value: ApdexOne
+        - name: GIT_REPO
+          value: node-project
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+      volumeMounts:
+        - name: build-pv
+          mountPath: /mnt/data
+      imagePullSecrets:
+        - name: regcred
+    volumes:
+      - name: build-pv
+        persistentVolumeClaim:
+          claimName: build-pv-claim
+
+  - name: integration-test-service
+    resource:
+      action: apply
+      manifest: |
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: integration-test
+          namespace: argo
+          ownerReferences:
+          - apiVersion: argoproj.io/v1alpha1
+            blockOwnerDeletion: true
+            kind: Workflow
+            name: "{{workflow.name}}"
+            uid: "{{workflow.uid}}"
+        spec:
+          selector:
+            app: integration-test
+          ports:
+          - protocol: TCP
+            port: 80
+            targetPort: 8080
+
+  - name: myapp-service
+    resource:
+      action: apply
+      manifest: |
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: myapp
+          namespace: argo
+          ownerReferences:
+          - apiVersion: argoproj.io/v1alpha1
+            blockOwnerDeletion: true
+            kind: Workflow
+            name: "{{workflow.name}}"
+            uid: "{{workflow.uid}}"
+        spec:
+          selector:
+            app: myapp
+          ports:
+          - protocol: TCP
+            port: 80
+            targetPort: 3000
