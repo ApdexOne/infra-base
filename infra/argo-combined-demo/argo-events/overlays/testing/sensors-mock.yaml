@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Sensor
 metadata:
-  name: webhook
+  name: webhook-mock
 spec:
   template:
     serviceAccountName: argo-events-sa
@@ -67,57 +67,14 @@ spec:
                         value: vfarcic/
                       - name: container_tag
                         value: ""
-                  - name: promote-staging
-                    templateRef:
-                      name: promote
-                      template: promote
-                      clusterScope: true
-                    arguments:
-                      parameters:
-                      - name: environment
-                        value: staging
-                      - name: repo_owner
-                        value: vfarcic
-                      - name: repo_name
-                        value: argo-combined-demo
-                      - name: image_owner
-                        value: vfarcic
-                      - name: image_name
-                        value: ""
-                      - name: tag
-                        value: ""
-                    dependencies:
-                    - build
-                  - name: promote-production
-                    templateRef:
-                      name: promote
-                      template: promote
-                      clusterScope: true
-                    arguments:
-                      parameters:
-                      - name: environment
-                        value: production
-                      - name: repo_owner
-                        value: vfarcic
-                      - name: repo_name
-                        value: argo-combined-demo
-                      - name: image_owner
-                        value: vfarcic
-                      - name: image_name
-                        value: ""
-                      - name: tag
-                        value: ""
-                    dependencies:
-                    - test-functional
-                    - test-integration
                   - name: test-functional
                     template: test
                     dependencies:
-                    - promote-staging
+                    - build
                   - name: test-integration
                     template: test
                     dependencies:
-                    - promote-staging
+                    - build
               - name: test
                 script:
                   image: alpine
