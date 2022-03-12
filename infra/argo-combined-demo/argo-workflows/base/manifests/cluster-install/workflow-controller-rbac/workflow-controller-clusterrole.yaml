@@ -37,6 +37,7 @@ rules:
   resources:
   - workflows
   - workflows/finalizers
+  - workflowtaskresults
   - workflowtasksets
   - workflowtasksets/finalizers
   verbs:
