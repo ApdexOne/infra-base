@@ -121,6 +121,8 @@ spec:
                 - name: regcred
 
   - name: pull-build
+    securityContext:
+      runAsUser: 0
     container:
       image: norgefajardo/pull-build-node:0.1
       resources:
