@@ -5,3 +5,4 @@ resources:
 - crds
 - workflow-controller
 - argo-server
+- namespace.yaml
