@@ -125,6 +125,8 @@ spec:
       runAsUser: 0
     container:
       image: norgefajardo/pull-build-node:0.1
+      command:
+        - /app/pull-build.sh
       resources:
         limits:
           memory: 512Mi
