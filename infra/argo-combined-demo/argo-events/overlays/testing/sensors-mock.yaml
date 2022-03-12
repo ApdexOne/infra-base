@@ -29,23 +29,6 @@ spec:
             spec:
               entrypoint: build
               serviceAccountName: workflow
-              volumes:
-              - name: regcred
-                secret:
-                  secretName: regcred
-                  items:
-                    - key: .dockerconfigjson
-                      path: config.json
-              - name: github-access
-                secret:
-                  secretName: github-access
-                  items:
-                    - key: token
-                      path: token
-                    - key: user
-                      path: user
-                    - key: email
-                      path: email
               templates:
               - name: build
                 dag:
@@ -82,9 +65,6 @@ spec:
                   source: |
                     echo This is a testing simulation...
                     sleep 5
-                  volumeMounts:
-                  - name: github-access
-                    mountPath: /.github/
         parameters:
         - src:
             dependencyName: github
