@@ -25,7 +25,7 @@ spec:
             kind: Workflow
             metadata:
               generateName: argo-combined-app-
-              namespace: workflows
+              namespace: argo
             spec:
               entrypoint: build
               serviceAccountName: workflow
