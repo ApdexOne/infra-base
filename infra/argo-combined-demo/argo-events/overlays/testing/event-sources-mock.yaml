@@ -10,11 +10,10 @@ spec:
     - port: 12000
       targetPort: 12000
   webhook:
-    example:
-      port: "12000"
-      endpoint: /mock
-      method: POST
-
+      argo-combined-app:
+        port: "12000"
+        endpoint: /mock
+        method: POST
 ---
 
 apiVersion: networking.k8s.io/v1
