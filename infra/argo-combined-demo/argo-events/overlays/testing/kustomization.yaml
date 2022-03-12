@@ -3,9 +3,8 @@ kind: Kustomization
 bases:
   - github.com/argoproj/argo-events/manifests/namespace-install
 resources:
-- ../../base
+  #- ../../base
 - event-sources.yaml
 - sensors.yaml
   #- githubcred.yaml
 namespace: argo-events
-
