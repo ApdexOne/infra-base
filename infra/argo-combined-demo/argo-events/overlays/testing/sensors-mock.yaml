@@ -28,7 +28,7 @@ spec:
               namespace: argo
             spec:
               entrypoint: build
-              serviceAccountName: workflow
+              serviceAccountName: argo
               templates:
               - name: build
                 dag:
