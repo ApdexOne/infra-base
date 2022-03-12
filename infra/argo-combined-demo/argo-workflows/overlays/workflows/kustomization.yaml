@@ -4,6 +4,7 @@ resources:
   - namespace.yaml
   - rbac.yaml
   - githubcred.yaml
+  - container-image.yaml
 resources:
   - buildcontainerimage.yaml
 namespace: workflows
