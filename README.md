@@ -1,12 +1,14 @@
 ## Instalacion del cluster kubernetes
 
-Como plataforma kubernetes se puede utilizar cualquiera de las siguientes:
+Para la instalaciacuteon del cluster Kubernetes podemos utilizar cualquiera
+de las siguientes herramientas:
+<br>
 - kind
 - k3s
 - minikube
 - RancherDesktop
-
-Recomendamos utilizar esta ultima ya que puede ser ejecutada en diferenetes
+<br>
+Recomendamos utilizar esta acuteultima ya que puede ser ejecutada en diferenetes
 SO ademas de su intuitiva interfaz para la administracion
 
 Es necesario verificar que luego de instalar la distribucion de k8s se este
