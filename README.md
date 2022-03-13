@@ -63,6 +63,9 @@ Ejecutaremos:
 helm install --dependency-update gitea -f infra/argo-combined-demo/gitea/values.yaml infra/argo-combined-demo/gitea
 ```
 
+Luego de instalado podemos acceder desde [http://git.127.0.0.1.nip.io/]
+
+
 1 .  Sealed-secrets <br>
 Nos permite guardar secretos de forma segura en nuestros repositorios
 Instalacion:<br>
