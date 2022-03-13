@@ -49,6 +49,19 @@ Desde la raiz del repositorio: <br>
 Instalacion del ingress controller
 <br>
 <code>sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml</code>
+<br>
+
+Luego de la instalacion del cluster instalaremos un software (Gitea),lo
+utilizaremos como un repo paralelo al github real para poder realizar pruebas
+de integracion entre los componentes de la CI/CD.
+
+Ejecutaremos:
+
+```
+helm repo add gitea-charts https://dl.gitea.io/charts/
+helm repo update
+helm install gitea gitea-charts/gitea
+```
 
 1 .  Sealed-secrets <br>
 Nos permite guardar secretos de forma segura en nuestros repositorios
