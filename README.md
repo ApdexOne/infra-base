@@ -58,23 +58,24 @@ de integracion entre los componentes de la CI/CD.
 Ejecutaremos:
 
 ```
-helm repo add gitea-charts https://dl.gitea.io/charts/
-helm repo update
-helm install gitea gitea-charts/gitea
+helm install --dependency-update gitea -f infra/argo-combined-demo/gitea/values.yaml infra/argo-combined-demo/gitea
 ```
 
 1 .  Sealed-secrets <br>
 Nos permite guardar secretos de forma segura en nuestros repositorios
 Instalacion:<br>
-<code>sudo  kubectl apply -f infra/k8s-apps/sealed-secrets/controller.yaml</code>
 
-2 . ArgoCD <br>
+```
+sudo  kubectl apply -f infra/k8s-apps/sealed-secrets/controller.yaml
+```
 
-<code>
-sudo kubectl kustomize infra/k8s-apps/argo-cd/overlays/testing \
-| sudo kubectl apply -f -
+2 . ArgoCD
+
 <br>
-</code>
+```
+sudo kubectl kustomize infra/k8s-apps/argo-cd/overlays/testing | sudo kubectl apply -f -
+```
+<br>
 
 3 . Creamos los secretos para conectarnos al github
 
