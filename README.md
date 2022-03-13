@@ -1,6 +1,6 @@
-## Instalacion del cluster kubernetes
+## Instalaci&oacute;n del cluster kubernetes
 
-Para la instalaci&oacute; del cluster Kubernetes podemos utilizar cualquiera
+Para la instalaci&oacute;n del cluster Kubernetes podemos utilizar cualquiera
 de las siguientes herramientas:
 <br>
 - kind
@@ -8,8 +8,8 @@ de las siguientes herramientas:
 - minikube
 - RancherDesktop
 <br>
-Recomendamos utilizar esta acuteultima ya que puede ser ejecutada en diferenetes
-SO ademas de su intuitiva interfaz para la administracion
+Recomendamos utilizar esta &uacute;ltima ya que puede ser ejecutada en diferenetes
+SO ademas de su intuitiva interfaz para la administraci&oacute;n
 
 Es necesario verificar que luego de instalar la distribucion de k8s se este
 ejecutando algun Ingress Controller (Nginx, Ambassador, Traefik, Haproxy)
