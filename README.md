@@ -43,13 +43,15 @@ necesarias para el funcionamiento de nuestras pruebas
 
 Instalacion del cluster Kubernetes
 Desde la raiz del repositorio: <br>
-<br>
-<code>kind create cluster --config=infra/cluster/kind.yaml</code>
+
+```
+kind create cluster --config=infra/cluster/kind.yaml
+```
 
 Instalacion del ingress controller
-<br>
-<code>sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml</code>
-<br>
+```
+sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+```
 
 Luego de la instalacion del cluster instalaremos un software (Gitea),lo
 utilizaremos como un repo paralelo al github real para poder realizar pruebas
@@ -71,11 +73,9 @@ sudo  kubectl apply -f infra/k8s-apps/sealed-secrets/controller.yaml
 
 2 . ArgoCD
 
-<br>
 ```
 sudo kubectl kustomize infra/k8s-apps/argo-cd/overlays/testing | sudo kubectl apply -f -
 ```
-<br>
 
 3 . Creamos los secretos para conectarnos al github
 
