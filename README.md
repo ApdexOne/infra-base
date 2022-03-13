@@ -1,6 +1,6 @@
 ## Instalacion del cluster kubernetes
 
-Para la instalaciacuteon del cluster Kubernetes podemos utilizar cualquiera
+Para la instalaci&oacute; del cluster Kubernetes podemos utilizar cualquiera
 de las siguientes herramientas:
 <br>
 - kind
