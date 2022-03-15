@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: http://git.127.0.0.1.nip.io/ApdexOne/platform.git
     targetRevision: HEAD
-    path: testing
+    path: infra/testing
   destination:
     server: https://kubernetes.default.svc
     namespace: testing

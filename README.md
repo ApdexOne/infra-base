@@ -77,6 +77,9 @@ de la plataforma
 
 ```
 git remote add gitea http://git.127.0.0.1.nip.io/ApdexOne/platform.git
+git add .
+git commit -am "Initial commit"
+git push -u gitea master
 ```
 
 Una vez que tengamos en una replica del repo de Github en nuestro repo local
@@ -141,7 +144,7 @@ kubectl --namespace workflows \
 2 . ArgoCD
 
 ```
-sudo kubectl kustomize infra/k8s-apps/argo-cd/overlays/testing | sudo kubectl apply -f -
+sudo kubectl kustomize infra/argo-cd/overlays/testing | sudo kubectl apply -f -
 ```
 
 3 . Creamos los secretos para conectarnos al github
