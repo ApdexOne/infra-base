@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: production
+  project: testing
   source:
     path: infra/argo-cd/overlays/testing
     repoURL: http://gitea-http.services.svc:3000/ApdexOne/platform.git
