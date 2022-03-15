@@ -10,7 +10,7 @@ metadata:
 spec:
   project: testing
   source:
-    repoURL: http://git.127.0.0.1.nip.io/ApdexOne/platform.git
+    repoURL: http://gitea-http.services.svc:3000/ApdexOne/platform.git
     targetRevision: HEAD
     path: infra/testing
   destination:
