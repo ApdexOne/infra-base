@@ -128,6 +128,23 @@ data:
 ```
 
 ```
+echo "apiVersion: v1
+kind: Secret
+metadata:
+  name: github-access
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+type: Opaque
+stringData:
+  url: $(echo -n token_gitea | base64)" \
+  password: $(echo -n token_gitea | base64)" \
+  username: $(echo -n token_gitea | base64)" \
+    | kubeseal --format yaml \
+    | tee argo-cd/overlays/testing/githubcred.yaml
+```
+
+```
 kubectl --namespace workflows \
     create secret \
     docker-registry regcred \
@@ -152,9 +169,9 @@ sudo kubectl kustomize infra/argo-cd/overlays/testing | sudo kubectl apply -f -
 4 . Aplicaciones base
 
 ```
-sudo kubectl apply -f infra/argo-combined-demo/project.yaml
+sudo kubectl apply -f infra/project.yaml
 ```
 
 ```
-sudo kubectl apply -f infra/argo-combined-demo/apps.yaml
+sudo kubectl apply -f infra/apps.yaml
 ```
