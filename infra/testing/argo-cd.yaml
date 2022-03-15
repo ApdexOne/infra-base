@@ -8,8 +8,8 @@ metadata:
 spec:
   project: production
   source:
-    path: argo-cd/overlays/production
-    repoURL: https://github.com/vfarcic/argo-combined-demo
+    path: infra/argo-cd/overlays/testing
+    repoURL: http://gitea-http.services.svc:3000/ApdexOne/platform.git
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc

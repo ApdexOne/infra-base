@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ../../base
 - ingress.yaml
+- githubcred.yaml
 patches:
 - path: redis_patch.json
   target:
