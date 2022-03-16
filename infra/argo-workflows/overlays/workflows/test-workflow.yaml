@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: pull-build-test-1
+  generateName: pull-build-test-
+  namespace: argo
+spec:
+  entrypoint: full
+  volumes:
+  - name: kaniko-secret
+    secret:
+      secretName: regcred
+      items:
+        - key: .dockerconfigjson
+          path: config.json
+  templates:
+    - name: build
+      dag:
+        tasks:
+          - name: build
+            templateRef:
+              name: container-image
+              template: build-kaniko-git
+              clusterScope: true
+            arguments:
+              parameteres:
+                - name: argo_repo
+                  value: http://gitea-http.services.svc:3000/ApdexOne/pipeline-demo
+                - name: container_name
+                  value: norgefajardo/cypress
+                - name: container_tap
+                  value: "0.0.1"
