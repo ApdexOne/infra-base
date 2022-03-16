@@ -23,7 +23,7 @@ spec:
               template: build-kaniko-git
               clusterScope: true
             arguments:
-              parameteres:
+              parameters:
                 - name: repo_url
                   value: http://gitea-http.services.svc:3000/ApdexOne/pipeline-demo
                 - name: container_image
