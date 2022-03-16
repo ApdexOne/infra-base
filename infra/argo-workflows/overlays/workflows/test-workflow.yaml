@@ -5,6 +5,7 @@ metadata:
   generateName: pull-build-test-
   namespace: argo
 spec:
+  serviceAccountName: workflow
   entrypoint: build
   volumes:
   - name: regcred
