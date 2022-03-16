@@ -24,9 +24,9 @@ spec:
               clusterScope: true
             arguments:
               parameteres:
-                - name: argo_repo
+                - name: repo_url
                   value: http://gitea-http.services.svc:3000/ApdexOne/pipeline-demo
-                - name: container_name
+                - name: container_image
                   value: norgefajardo/cypress
-                - name: container_tap
+                - name: container_tag
                   value: "0.0.1"
