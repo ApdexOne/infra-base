@@ -1,0 +1,33 @@
+    - name: tests
+      script:
+        image: cypress/included:3.4.0
+        source: |
+          yarn install
+          npm run runHeadless
+
+          - name: build
+            templateRef:
+              name: container-image
+              template: build-kaniko-git
+              clusterScope: true
+            arguments:
+              parameters:
+                - name: repo_url
+                  value: git@git.gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
+                - name: container_image
+                  value: norgefajardo/cypress
+                - name: container_tag
+                  value: "0.0.1"
+          - name: build
+            templateRef:
+              name: container-image
+              template: build-kaniko-git
+              clusterScope: true
+            arguments:
+              parameters:
+                - name: repo_url
+                  value: git@git.gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
+                - name: container_image
+                  value: norgefajardo/cypress
+                - name: container_tag
+                  value: "0.0.1"

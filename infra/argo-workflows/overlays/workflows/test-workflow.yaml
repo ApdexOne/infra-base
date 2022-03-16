@@ -1,12 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: pull-build-test-1
   generateName: pull-build-test-
   namespace: argo
 spec:
   serviceAccountName: workflow
-  entrypoint: build
+  entrypoint: tests
+  arguments:
+    parameters:
+      - name: repo
+        value: http://gitea-ssh.services.svc/ApdexOne/pipeline-demo
+      - name: revision
+        value: HEAD
   volumes:
   - name: regcred
     secret:
@@ -15,19 +20,15 @@ spec:
         - key: .dockerconfigjson
           path: config.json
   templates:
-    - name: build
-      dag:
-        tasks:
-          - name: build
-            templateRef:
-              name: container-image
-              template: build-kaniko-git
-              clusterScope: true
-            arguments:
-              parameters:
-                - name: repo_url
-                  value: git@git.gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
-                - name: container_image
-                  value: norgefajardo/cypress
-                - name: container_tag
-                  value: "0.0.1"
+    - name: checkout
+      inputs:
+        artifacts:
+          - name: source
+            path: /src
+            git:
+              repo: "{{workflow.parameters.repo}}"
+              revision: "{{workflow.parameters.revision}}"
+      container:
+        image: golang:1.9.2
+        command: ["/bin/sh","-c"]
+        args: ["cd /src && git status && ls -l"]
