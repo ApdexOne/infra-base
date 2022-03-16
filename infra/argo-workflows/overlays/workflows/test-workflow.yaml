@@ -7,7 +7,7 @@ metadata:
 spec:
   entrypoint: build
   volumes:
-  - name: kaniko-secret
+  - name: regcred
     secret:
       secretName: regcred
       items:
