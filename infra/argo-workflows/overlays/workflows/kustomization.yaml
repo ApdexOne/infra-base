@@ -4,4 +4,5 @@ resources:
 - namespace.yaml
 - rbac.yaml
 - githubcred.yaml
+- test-workflow.yaml
 namespace: workflows
