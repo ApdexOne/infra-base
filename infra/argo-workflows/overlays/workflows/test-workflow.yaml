@@ -6,7 +6,7 @@ metadata:
   namespace: argo
 spec:
   serviceAccountName: workflow
-  entrypoint: tests
+  entrypoint: checkout
   arguments:
     parameters:
       - name: repo
