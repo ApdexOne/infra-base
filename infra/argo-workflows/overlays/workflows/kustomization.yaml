@@ -5,4 +5,5 @@ resources:
 - rbac.yaml
 - githubcred.yaml
 - test-workflow.yaml
+- github-access-ssh.yaml
 namespace: workflows

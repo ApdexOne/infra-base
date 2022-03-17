@@ -29,6 +29,15 @@ spec:
             git:
               repo: "{{workflow.parameters.repo}}"
               revision: "{{workflow.parameters.revision}}"
+              usernameSecret:
+                name: github-access-ssh
+                key: username
+              passwordSecret:
+                name: github-access-ssh
+                key: password
+              sshPrivateKeySecret:
+                name: github-access-ssh
+                key: sshPrivateKey
       container:
         image: golang:1.9.2
         command: ["/bin/sh","-c"]
