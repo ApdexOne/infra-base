@@ -39,8 +39,10 @@ spec:
               sshPrivateKeySecret:
                 name: github-access-ssh
                 key: sshPrivateKey
-      container:
+      script:
         image: cypress/included:3.4.0
-        command: ["/bin/sh","-c"]
-        args: ["npm run runHeadless"]
+        command: [bash]
+        source: |
+          yarn install
+          npm run runHeadless
         workingDir: /src
