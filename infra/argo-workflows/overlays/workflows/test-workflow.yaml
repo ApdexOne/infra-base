@@ -29,6 +29,7 @@ spec:
             git:
               repo: git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
               revision: "HEAD"
+              insecureIgnoreHostKey: true
               usernameSecret:
                 name: github-access-ssh
                 key: username
