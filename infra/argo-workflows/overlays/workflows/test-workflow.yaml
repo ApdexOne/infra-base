@@ -30,13 +30,13 @@ spec:
               repo: git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
               revision: "HEAD"
               usernameSecret:
-                name: github-access
+                name: github-access-ssh
                 key: username
               passwordSecret:
-                name: github-access
+                name: github-access-ssh
                 key: password
               sshPrivateKeySecret:
-                name: github-access
+                name: github-access-ssh
                 key: sshPrivateKey
       container:
         image: golang:1.10
