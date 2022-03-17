@@ -27,18 +27,19 @@ spec:
           - name: source
             path: /src
             git:
-              repo: "{{workflow.parameters.repo}}"
-              revision: "{{workflow.parameters.revision}}"
+              repo: git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
+              revision: "HEAD"
               usernameSecret:
-                name: github-access-ssh
+                name: github-access
                 key: username
               passwordSecret:
-                name: github-access-ssh
+                name: github-access
                 key: password
               sshPrivateKeySecret:
-                name: github-access-ssh
+                name: github-access
                 key: sshPrivateKey
       container:
-        image: golang:1.9.2
+        image: golang:1.10
         command: ["/bin/sh","-c"]
         args: ["cd /src && git status && ls -l"]
+        workingDir: /src
