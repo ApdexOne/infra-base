@@ -10,9 +10,9 @@ spec:
   arguments:
     parameters:
       - name: repo
-        value: ssh://git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
+        value: "git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git"
       - name: revision
-        value: HEAD
+        value: "HEAD"
   volumes:
   - name: regcred
     secret:
