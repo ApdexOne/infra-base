@@ -2676,7 +2676,8 @@ prometheus:
     ## Label selector for services to which this ServiceMonitor applies
     ##
     selector:
-      app.kubernetes.io/name: prometheus-statsd-exporter
+      matchLabels:
+        app.kubernetes.io/name: prometheus-statsd-exporter
 
     ## Namespaces from which services are selected
     ##
@@ -2692,10 +2693,10 @@ prometheus:
 
     ## Endpoints of the selected service to be monitored
     ##
-    # endpoints: []
+    endpoints:
       ## Name of the endpoint's service port
       ## Mutually exclusive with targetPort
-      # - port: ""
+      - port: port1
 
       ## Name or number of the endpoint's target port
       ## Mutually exclusive with port
