@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "prometheus-statsd-exporter.fullname" . }}
+  labels:
+    {{- include "prometheus-statsd-exporter.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ index .Values.service.ports 0 }}
+      targetPort: port1
+      protocol: TCP
+      name: port1
+    - port: {{ index .Values.service.ports 1 }}
+      targetPort: port2
+      protocol: TCP
+      name: port2
+    - port: {{ index .Values.service.ports 1 }}
+      targetPort: port3
+      protocol: UDP
+      name: port3
+  selector:
+    {{- include "prometheus-statsd-exporter.selectorLabels" . | nindent 4 }}

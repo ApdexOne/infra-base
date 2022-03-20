@@ -8,8 +8,8 @@ metadata:
 spec:
   project: testing
   source:
-    path: charts/prometheus
-    repoURL: https://github.com/prometheus-community/helm-charts.git
+    path: infra/prometheus
+    repoURL: http://gitea-http.services.svc:3000/ApdexOne/platform.git
     targetRevision: HEAD
   destination:
     namespace: monitoring
