@@ -2650,10 +2650,10 @@ prometheus:
   #      - nodes/proxy
   #    verbs: [ "get", "list", "watch" ]
 
-  additionalServiceMonitors: []
+  additionalServiceMonitors:
   ## Name of the ServiceMonitor to create
   ##
-  # - name: ""
+  - name: "exporter-stastd"
 
     ## Additional labels to set used for the ServiceMonitorSelector. Together with standard labels from
     ## the chart
@@ -2675,18 +2675,20 @@ prometheus:
 
     ## Label selector for services to which this ServiceMonitor applies
     ##
-    # selector: {}
+    selector:
+      - app.kubernetes.io/name=prometheus-statsd-exporter
 
     ## Namespaces from which services are selected
     ##
-    # namespaceSelector:
+    namespaceSelector:
       ## Match any namespace
       ##
       # any: false
 
       ## Explicit list of namespace names to select
       ##
-      # matchNames: []
+      matchNames:
+        - monitoring
 
     ## Endpoints of the selected service to be monitored
     ##
