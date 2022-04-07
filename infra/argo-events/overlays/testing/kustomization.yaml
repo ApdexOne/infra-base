@@ -4,5 +4,4 @@ resources:
 - ../../base/cluster-install
 - event-sources.yaml
 - sensors.yaml
-- githubcred.yaml
 namespace: argo-events
