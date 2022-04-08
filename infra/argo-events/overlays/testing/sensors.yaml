@@ -27,7 +27,7 @@ spec:
               generateName: argo-combined-app-
               namespace: workflows
             spec:
-              entrypoint: build
+              entrypoint: run-e2e-tests
               serviceAccountName: workflow
               volumes:
               - name: regcred
