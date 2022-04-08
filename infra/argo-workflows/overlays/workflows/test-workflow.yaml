@@ -10,7 +10,7 @@ spec:
   arguments:
     parameters:
       - name: repo
-        value: "http://gitea-http.services.svc:3000/ApdexOne/pipeline-demo.git"
+        value: "git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git"
       - name: revision
         value: "HEAD"
   volumes:
@@ -27,18 +27,18 @@ spec:
           - name: source
             path: /src
             git:
-              repo: http://gitea-http.services.svc:3000/ApdexOne/pipeline-demo.git
+              repo: git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
               revision: "HEAD"
               insecureIgnoreHostKey: true
               usernameSecret:
-                name: github-access
-                key: user
+                name: github-access-ssh
+                key: username
               passwordSecret:
-                name: github-access
-                key: token
+                name: github-access-ssh
+                key: password
               sshPrivateKeySecret:
-                name: github-access
-                key: email
+                name: github-access-ssh
+                key: sshPrivateKey
       script:
         image: cypress/included:3.4.0
         command: [bash]
