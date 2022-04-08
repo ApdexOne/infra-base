@@ -8,8 +8,8 @@ spec:
   template:
     serviceAccountName: argo-events-sa
   dependencies:
-  - name: github
-    eventSourceName: github
+  - name: gitea
+    eventSourceName: webhook
     eventName: argo-combined-app
   triggers:
   - template:
