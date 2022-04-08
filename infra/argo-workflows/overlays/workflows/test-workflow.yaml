@@ -10,7 +10,7 @@ spec:
   arguments:
     parameters:
       - name: repo
-        value: "git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git"
+        value: "git@gitea-ssh.services.svc:norge/pipeline-demo-test.git"
       - name: revision
         value: "HEAD"
   volumes:
@@ -27,7 +27,7 @@ spec:
           - name: source
             path: /src
             git:
-              repo: git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
+              repo: git@gitea-ssh.services.svc:norge/pipeline-demo-test.git
               revision: "HEAD"
               insecureIgnoreHostKey: true
               usernameSecret:
