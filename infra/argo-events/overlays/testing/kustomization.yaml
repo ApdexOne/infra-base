@@ -5,4 +5,5 @@ resources:
 - event-sources.yaml
 - sensors.yaml
 - githubcred.yaml
+- sensors-rbac.yaml
 namespace: argo-events
