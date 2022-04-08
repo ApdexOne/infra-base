@@ -27,18 +27,18 @@ spec:
           - name: source
             path: /src
             git:
-              repo: git@gitea-ssh.services.svc:ApdexOne/pipeline-demo.git
+              repo: http://gitea-http.services.svc:3000/ApdexOne/pipeline-demo.git
               revision: "HEAD"
               insecureIgnoreHostKey: true
               usernameSecret:
-                name: github-access-ssh
-                key: username
+                name: github-access
+                key: user
               passwordSecret:
-                name: github-access-ssh
-                key: password
+                name: github-access
+                key: token
               sshPrivateKeySecret:
-                name: github-access-ssh
-                key: sshPrivateKey
+                name: github-access
+                key: email
       script:
         image: cypress/included:3.4.0
         command: [bash]
