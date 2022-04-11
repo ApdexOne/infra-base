@@ -27,7 +27,7 @@ spec:
           - name: run-cypress
             templateRef:
               name: cypress-test
-              template: cypress-test
+              template: run-e2e-tests
               clusterScope: true
             arguments:
               parameters:
