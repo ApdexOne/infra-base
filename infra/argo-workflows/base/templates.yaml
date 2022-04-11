@@ -84,8 +84,8 @@ spec:
         - name: source
           path: /src
           git:
-            repo_url: {{ inputs.parameters.repository }}
-            repo_commit_id: {{ inputs.parameters.brach }}
+            repo_url: "{{inputs.parameters.repository}}"
+            repo_commit_id: "{{inputs.parameters.brach}}"
             insecureIgnoreHostKey: true
             usernameSecret:
               name: github-access-ssh
