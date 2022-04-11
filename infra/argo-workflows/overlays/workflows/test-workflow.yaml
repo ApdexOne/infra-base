@@ -22,27 +22,16 @@ spec:
           path: config.json
   templates:
     - name: run-e2e-tests
-      inputs:
-        artifacts:
-          - name: source
-            path: /src
-            git:
-              repo: git@gitea-ssh.services.svc:norge/pipeline-demo-test.git
-              revision: "HEAD"
-              insecureIgnoreHostKey: true
-              usernameSecret:
-                name: github-access-ssh
-                key: username
-              passwordSecret:
-                name: github-access-ssh
-                key: password
-              sshPrivateKeySecret:
-                name: github-access-ssh
-                key: sshPrivateKey
-      script:
-        image: cypress/included:3.4.0
-        command: [bash]
-        source: |
-          yarn install
-          npm run runHeadless
-        workingDir: /src
+      dag:
+        tasks:
+          - name: run-cypress
+            templateRef:
+              name: cypress-test
+              template: cypress-test
+              clusterScope: true
+            arguments:
+              parameters:
+                - name: repository
+                  value: git@gitea-ssh.services.svc:norge/pipeline-demo-test.git
+                - name: branch
+                  value: master

@@ -78,28 +78,14 @@ spec:
   - name: run-test
     inputs:
       parameters:
-        - name: repository
-        - name: brach
-      artifacts:
-        - name: source
-          path: /src
-          git:
-            repo_url: {{ inputs.parameters.repository }}
-            repo_commit_id: {{ inputs.parameters.brach }}
-            insecureIgnoreHostKey: true
-            usernameSecret:
-              name: github-access-ssh
-              key: username
-            passwordSecret:
-              name: github-access-ssh
-              key: password
-            sshPrivateKeySecret:
-              name: github-access-ssh
-              key: sshPrivateKey
-      script:
-        image: cypress/included:3.4.0
-        command: [bash]
-        source: |
-          yarn install
-          npm run runHeadless
-        workingDir: /src
+      - name: repo_url
+      - name: repo_ref
+        value: refs/heads/master
+      - name: repo_commit_id
+        value: HEAD
+    container:
+      image: cypress/included:3.4.0
+      command: [bash]
+      args:
+      - --context={{inputs.parameters.repo_url}}#{{inputs.parameters.repo_ref}}#{{inputs.parameters.repo_commit_id}}
+      - --destination={{inputs.parameters.container_image}}:{{inputs.parameters.container_tag}}
