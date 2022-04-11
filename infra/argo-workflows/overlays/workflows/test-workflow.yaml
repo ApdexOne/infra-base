@@ -3,10 +3,10 @@ kind: Workflow
 metadata:
   name: test
   generateName: pull-build-test-
-  namespace: argo
+  namespace: workflow
 spec:
   serviceAccountName: workflow
-  entrypoint: run-e2e-tests
+  entrypoint: run-tests
   arguments:
     parameters:
       - name: repo
@@ -21,7 +21,7 @@ spec:
         - key: .dockerconfigjson
           path: config.json
   templates:
-    - name: run-e2e-tests
+    - name: run-tests
       dag:
         tasks:
           - name: run-cypress
