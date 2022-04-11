@@ -75,7 +75,7 @@ metadata:
 spec:
   serviceAccountName: workflow
   templates:
-  - name: run-test
+  - name: run-e2e-tests
     inputs:
       parameters:
         - name: repository
