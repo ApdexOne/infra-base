@@ -87,22 +87,22 @@ spec:
         parameters:
           - name: repository
           - name: brach
-      artifacts:
-        - name: source
-          path: /src
-          git:
-            repo: "{{inputs.parameters.repository}}"
-            revision: "{{inputs.parameters.brach}}"
-            insecureIgnoreHostKey: true
-            usernameSecret:
-              name: github-access-ssh
-              key: username
-            passwordSecret:
-              name: github-access-ssh
-              key: password
-            sshPrivateKeySecret:
-              name: github-access-ssh
-              key: sshPrivateKey
+        artifacts:
+          - name: source
+            path: /src
+            git:
+              repo: "{{inputs.parameters.repository}}"
+              revision: "{{inputs.parameters.brach}}"
+              insecureIgnoreHostKey: true
+              usernameSecret:
+                name: github-access-ssh
+                key: username
+              passwordSecret:
+                name: github-access-ssh
+                key: password
+              sshPrivateKeySecret:
+                name: github-access-ssh
+                key: sshPrivateKey
       script:
         image: cypress/included:3.4.0
         command: [bash]
