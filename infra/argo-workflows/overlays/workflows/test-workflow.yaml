@@ -5,12 +5,17 @@ metadata:
   generateName: pull-build-test-
   namespace: argo
 spec:
-  arguments:
-    parameters:
-      - name: repository
-        value: "git@gitea-ssh.services.svc:norge/pipeline-demo-test.git"
-      - name: brach
-        value: "master"
-  workflowTemplateRef:
-    name: cypress-test
-    clusterScope: true
+  templates:
+    - name: diamond
+      dag:
+        tasks:
+          - name: e2e-tests
+            arguments:
+              parameters:
+                - name: repository
+                  value: "git@gitea-ssh.services.svc:norge/pipeline-demo-test.git"
+                - name: brach
+                  value: "master"
+            workflowTemplateRef:
+              name: cypress-test
+              clusterScope: true
