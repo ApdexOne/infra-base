@@ -5,6 +5,7 @@ metadata:
   generateName: pull-build-test-
   namespace: argo
 spec:
+  entrypoint: diamond
   templates:
     - name: diamond
       dag:
