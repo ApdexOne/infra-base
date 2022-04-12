@@ -86,7 +86,7 @@ necesarias para el funcionamiento de nuestras pruebas.
 
     ```
     sudo kubectl create ns services
-    helm install --dependency-update gitea -f infra/argo-combined-demo/gitea/values.yaml infra/argo-combined-demo/gitea
+    helm install --dependency-update gitea -f infra/gitea/values.yaml infra/gitea
     ```
 
     Luego de instalado podemos acceder desde [http://git.127.0.0.1.nip.io/].
