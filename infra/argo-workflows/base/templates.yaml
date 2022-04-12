@@ -77,9 +77,9 @@ spec:
   serviceAccountName: workflow
   arguments:
     parameters:
-      - name: repo
+      - name: repository
         value: "git@gitea-ssh.services.svc:norge/pipeline-demo-test.git"
-      - name: revision
+      - name: brach
         value: "HEAD"
   templates:
     - name: run-tests
