@@ -87,26 +87,26 @@ spec:
         parameters:
           - name: repository
           - name: brach
-        artifacts:
-          - name: source
-            path: /src
-            git:
-              repo_url: "{{inputs.parameters.repository}}"
-              repo_commit_id: "{{inputs.parameters.brach}}"
-              insecureIgnoreHostKey: true
-              usernameSecret:
-                name: github-access-ssh
-                key: username
-              passwordSecret:
-                name: github-access-ssh
-                key: password
-              sshPrivateKeySecret:
-                name: github-access-ssh
-                key: sshPrivateKey
-        script:
-          image: cypress/included:3.4.0
-          command: [bash]
-          source: |
-            yarn install
-            npm run runHeadless
-          workingDir: /src
+      artifacts:
+        - name: source
+          path: /src
+          git:
+            repo_url: "{{inputs.parameters.repository}}"
+            repo_commit_id: "{{inputs.parameters.brach}}"
+            insecureIgnoreHostKey: true
+            usernameSecret:
+              name: github-access-ssh
+              key: username
+            passwordSecret:
+              name: github-access-ssh
+              key: password
+            sshPrivateKeySecret:
+              name: github-access-ssh
+              key: sshPrivateKey
+      script:
+        image: cypress/included:3.4.0
+        command: [bash]
+        source: |
+          yarn install
+          npm run runHeadless
+        workingDir: /src

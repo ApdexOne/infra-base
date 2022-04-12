@@ -3,10 +3,8 @@ kind: Workflow
 metadata:
   name: test
   generateName: pull-build-test-
-  namespace: workflow
+  namespace: argo
 spec:
-  serviceAccountName: workflow
-  entrypoint: run-tests
   arguments:
     parameters:
       - name: repository
