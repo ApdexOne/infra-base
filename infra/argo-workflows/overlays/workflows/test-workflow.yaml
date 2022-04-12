@@ -9,29 +9,10 @@ spec:
   entrypoint: run-tests
   arguments:
     parameters:
-      - name: repo
+      - name: repository
         value: "git@gitea-ssh.services.svc:norge/pipeline-demo-test.git"
-      - name: revision
-        value: "HEAD"
-  volumes:
-  - name: regcred
-    secret:
-      secretName: regcred
-      items:
-        - key: .dockerconfigjson
-          path: config.json
-  templates:
-    - name: run-tests
-      dag:
-        tasks:
-          - name: run-cypress
-            templateRef:
-              name: cypress-test
-              template: run-e2e-tests
-              clusterScope: true
-            arguments:
-              parameters:
-                - name: repository
-                  value: git@gitea-ssh.services.svc:norge/pipeline-demo-test.git
-                - name: branch
-                  value: master
+      - name: brach
+        value: "master"
+  workflowTemplateRef:
+    name: cypress-test
+    clusterScope: true
