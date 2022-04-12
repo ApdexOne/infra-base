@@ -17,7 +17,7 @@ spec:
                   value: "git@gitea-ssh.services.svc:norge/pipeline-demo-test.git"
                 - name: brach
                   value: "master"
-            workflowTemplateRef:
+            templateRef:
               name: cypress-test
               template: run-tests
               clusterScope: true
